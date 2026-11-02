@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="RSI-HumanoidSoccer: training Kick and Dribble skills from a single reference motion." />
+    <title>RSI-HumanoidSoccer — Kick and Dribble from a Single Reference Motion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="RSI-HumanoidSoccer home">RSI<span>.</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#videos">Videos</a>
+        <a href="#claims">Claims</a>
+        <a href="#resources">Resources</a>
+        <a href="#citation">Citation</a>
+      </nav>
+      <a class="header-link" href="https://github.com/rsi-humanoid-soccer/rsi_humanoid_soccer" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <p class="eyebrow">HUMAN-IN-THE-LOOP RECURSIVE SELF-IMPROVEMENT</p>
+        <h1>Training Kick and Dribble Skills from a <em>Single Reference Motion.</em></h1>
+        <p class="hero-positioning">
+          An LLM plans each new version of the training setup; a human writes one sentence of feedback; the rollouts of the best policy feed the next version.
+        </p>
+        <p class="hero-copy">
+          The loop starts from one generated reference motion and no task-specific data collection, and it targets a humanoid Kick that works over a range of ball positions, evaluated on the real robot.
+        </p>
+        <div class="authors" id="authors" aria-label="Authors"></div>
+        <div class="hero-actions">
+          <a class="button button-primary" id="paper-link" href="#resources">Paper <span>↓</span></a>
+          <a class="button button-secondary" id="code-link" href="https://github.com/rsi-humanoid-soccer/rsi_humanoid_soccer" target="_blank" rel="noreferrer">Code <span>↗</span></a>
+        </div>
+        <p class="publication-note" id="publication-note"></p>
+        <figure class="hero-media-grid" aria-label="Real-robot clips">
+          <div class="hero-clip hero-clip-wide">
+            <video controls muted loop playsinline preload="none"><source src="assets/videos/real/01.mp4" type="video/mp4" /></video>
+            <span>Real robot · clip 01</span>
+          </div>
+          <div class="hero-clip">
+            <video controls muted loop playsinline preload="none"><source src="assets/videos/real/05.mp4" type="video/mp4" /></video>
+            <span>Real robot · clip 05</span>
+          </div>
+          <div class="hero-clip">
+            <video controls muted loop playsinline preload="none"><source src="assets/videos/real/09.mp4" type="video/mp4" /></video>
+            <span>Real robot · clip 09</span>
+          </div>
+          <div class="hero-clip">
+            <video controls muted loop playsinline preload="none"><source src="assets/videos/real/11.mp4" type="video/mp4" /></video>
+            <span>Real robot · clip 11</span>
+          </div>
+        </figure>
+        <p class="publication-note">Clips of earlier kick and dribble policies on the K1 humanoid; they stand in until the final policies of the runs are recorded.</p>
+      </section>
+
+      <section class="signal-strip" aria-label="Overview">
+        <div><span class="signal-number">01</span> One reference motion</div>
+        <div><span class="signal-number">02</span> LLM-planned versions</div>
+        <div><span class="signal-number">03</span> Data inherited between versions</div>
+      </section>
+
+      <section id="overview" class="section-shell method-section">
+        <div class="section-intro">
+          <p class="eyebrow">OVERVIEW</p>
+          <h2>One reference motion starts a loop that ends on the real robot.</h2>
+          <p>
+            A standard method that trains a kick from one reference stops at a single ball position. Going beyond it needs a loop that decides what to train on next, and a solver that keeps learning from the imperfect rollouts of the previous version, failures included.
+          </p>
+        </div>
+        <figure class="evidence-figure">
+          <div class="evidence-heading">
+            <p class="eyebrow">FIG. 01 · OVERVIEW</p>
+            <h3>From a reference motion to a locked policy on the robot.</h3>
+          </div>
+          <div class="evidence-grid evidence-grid-single">
+            <article>
+              <img src="assets/figures/rsi_concept.png" alt="Overview: (a) a reference motion shown as fading robot poses, (b) the loop of training, human feedback, LLM prompt and LLM output as a diff, (c) the evaluation range painted on the simulator ground, (d) a real-robot frame." />
+              <p><strong>(a)</strong> The single reference motion. <strong>(b)</strong> One version: train two seeds, keep the best checkpoint, a human writes a sentence of feedback, the LLM outputs the changes of the next version as a diff. <strong>(c)</strong> The start range of Kick (yellow) and the target directions of Dribble (blue). <strong>(d)</strong> The policy on the real robot. Text in the fields is an example, and the frames are illustrations.</p>
+            </article>
+          </div>
+        </figure>
+      </section>
+
+      <section id="method" class="research-section">
+        <div class="section-shell">
+          <p class="eyebrow">THE LOOP</p>
+          <h2>Each version changes what the robot trains on.</h2>
+          <p class="research-lead">
+            After the first kick policy, the tracking term is dropped and every later version is decided by the LLM from the failure statistics and the human's feedback. Only the data of the best policy carries over, not its weights.
+          </p>
+          <div class="innovation-grid">
+            <article><span>01</span><h3>Single reference</h3><p>One generated reference motion starts the first version, shared by Kick and Dribble. No expert demonstration is collected for the task.</p></article>
+            <article><span>02</span><h3>LLM planning</h3><p>The LLM may change the task distribution, reward terms, domain randomization, hyperparameters and thresholds, and nothing about the evaluator.</p></article>
+            <article><span>03</span><h3>Human feedback</h3><p>A human watches the best checkpoint of each version and writes a sentence, for example which behavior is weak.</p></article>
+            <article><span>04</span><h3>Data inheritance</h3><p>The best policy's rollouts, failures included, fill part of every training batch of the next version, which starts from fresh weights.</p></article>
+          </div>
+          <figure class="evidence-figure">
+            <div class="evidence-heading">
+              <p class="eyebrow">FIG. 02 · VERSIONS</p>
+              <h3>The range of ball positions that the kick handles grows from version to version.</h3>
+            </div>
+            <div class="evidence-grid evidence-grid-single">
+              <article>
+                <img src="assets/figures/rsi_iteration.png" alt="Four versions of the kick in the simulator, each with the start range of the ball painted on the ground and a diff of what the version changes." />
+                <p>The yellow area on the ground is the start range of the ball that each version handles; the dashed outline is the full target range. Under each version, a diff of its change (red: removed, green: added). This is an illustration with simulation screenshots and example changes, not a result.</p>
+              </article>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <section id="videos" class="research-section">
+        <div class="section-shell">
+          <p class="eyebrow">REAL ROBOT</p>
+          <h2>Kick and Dribble on the K1 humanoid.</h2>
+          <div class="task-list">
+            <article class="task-row">
+              <header class="task-summary">
+                <p class="research-tag">13 CLIPS</p>
+                <h3>Real-robot clips</h3>
+                <p>Clips of earlier kick and dribble policies. They are placeholders: the final policies of the runs, with the evaluation over the fixed start grid, will replace them.</p>
+              </header>
+              <div class="clip-grid">
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/01.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/02.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/03.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/04.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/05.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/06.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/07.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/08.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/09.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/10.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/11.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/12.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/13.mp4" type="video/mp4" /></video>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="claims" class="section-shell resources-section">
+        <p class="eyebrow">SCOPE</p>
+        <h2>What we claim, and what we do not.</h2>
+        <div class="resource-grid">
+          <div class="resource-card"><h3>We claim</h3><p>An existence result: from one reference motion, this loop can produce a Kick over a range of start positions, shown on the real robot. Results and ablations will be added when the experiments are complete.</p></div>
+          <div class="resource-card"><h3>We do not claim</h3><p>The lowest cost or the fewest versions, an automated loop, or that the skills cannot be trained without a reference motion.</p></div>
+          <div class="resource-card"><h3>What stays fixed</h3><p>The RL solver, the evaluator, the success criteria and the real-robot grid. A human is in the loop on every version.</p></div>
+        </div>
+      </section>
+
+      <section id="resources" class="section-shell resources-section">
+        <p class="eyebrow">RESOURCES</p>
+        <h2>Project materials.</h2>
+        <div class="resource-grid">
+          <a id="paper-card" class="resource-card resource-card-disabled" href="#" aria-disabled="true">
+            <span class="resource-icon">↙</span>
+            <h3>Paper</h3>
+            <p>Publication PDF will be linked here.</p>
+            <span class="resource-status">COMING SOON</span>
+          </a>
+          <a id="code-card" class="resource-card" href="https://github.com/rsi-humanoid-soccer/rsi_humanoid_soccer" target="_blank" rel="noreferrer">
+            <span class="resource-icon">⌘</span>
+            <h3>Code</h3>
+            <p>This project page; training code and configurations will follow.</p>
+            <span class="resource-status">OPEN ↗</span>
+          </a>
+          <a id="appendix-card" class="resource-card resource-card-disabled" href="#" aria-disabled="true">
+            <span class="resource-icon">＋</span>
+            <h3>Appendix</h3>
+            <p>Additional technical detail and experimental protocol.</p>
+            <span class="resource-status">COMING SOON</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="citation" class="section-shell citation-section">
+        <div>
+          <p class="eyebrow">CITATION</p>
+          <h2>Reference this work.</h2>
+          <p class="citation-copy">Under review; the entry will be updated.</p>
+        </div>
+        <div class="citation-block">
+          <button id="copy-citation" class="copy-button" type="button">Copy BibTeX</button>
+          <pre id="citation-text">@misc{rsi_humanoid_soccer,
+  title  = {RSI-HumanoidSoccer: Training Kick and Dribble Skills from a Single Reference Motion},
+  author = {Anonymous},
+  year   = {2026},
+  note   = {Under review}
+}</pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <p>RSI-HumanoidSoccer — Training Kick and Dribble Skills from a Single Reference Motion</p>
+      <p>© <span id="year"></span> Anonymous authors</p>
+    </footer>
+
+    <script src="assets/site.js"></script>
+  </body>
+</html>
