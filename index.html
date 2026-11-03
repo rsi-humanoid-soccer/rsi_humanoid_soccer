@@ -147,24 +147,63 @@
           <div class="task-list">
             <article class="task-row">
               <header class="task-summary">
-                <p class="research-tag">13 CLIPS</p>
-                <h3>Real-robot clips</h3>
-                <p>Clips of earlier kick and dribble policies. Clips of the final policies will be added.</p>
+                <p class="research-tag">BASELINE · 10 CLIPS</p>
+                <h3>Booster default kick</h3>
+                <p>The kick policy that ships with the robot, used as the reference.</p>
               </header>
               <div class="clip-grid">
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/01.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/02.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/03.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/04.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/05.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/06.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/07.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/08.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/09.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/10.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/11.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/12.mp4" type="video/mp4" /></video>
-                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/13.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/booster_1.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/booster_2.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/booster_3.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/booster_4.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/booster_5.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/booster_6.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/booster_7.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/booster_8.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/booster_9.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/booster_10.mp4" type="video/mp4" /></video>
+              </div>
+            </article>
+            <article class="task-row">
+              <header class="task-summary">
+                <p class="research-tag">OURS · 8 CLIPS</p>
+                <h3>Our kick</h3>
+                <p>The kick trained with our loop.</p>
+              </header>
+              <div class="clip-grid">
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/our_1.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/our_2.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/our_3.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/our_4.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/our_5.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/our_6.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/our_7.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/our_8.mp4" type="video/mp4" /></video>
+              </div>
+            </article>
+            <article class="task-row">
+              <header class="task-summary">
+                <p class="research-tag">DRIBBLE · 3 CLIPS</p>
+                <h3>Dribble</h3>
+                <p>Carrying the ball while following changes of direction.</p>
+              </header>
+              <div class="clip-grid">
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/dribble_1.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/dribble_2.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/dribble_3.mp4" type="video/mp4" /></video>
+              </div>
+            </article>
+            <article class="task-row">
+              <header class="task-summary">
+                <p class="research-tag">NAVIGATION + KICK · 4 CLIPS</p>
+                <h3>Navigation and kick</h3>
+                <p>The kick combined with a navigation policy: the robot walks to the ball and kicks it, and the kick works as well as when it is tested alone.</p>
+              </header>
+              <div class="clip-grid">
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/nav_1.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/nav_2.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/nav_3.mp4" type="video/mp4" /></video>
+                <video controls muted loop playsinline preload="none"><source src="assets/videos/real/nav_4.mp4" type="video/mp4" /></video>
               </div>
             </article>
           </div>
