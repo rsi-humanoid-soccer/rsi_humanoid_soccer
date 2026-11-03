@@ -94,37 +94,67 @@
           </div>
           <figure class="evidence-figure">
             <div class="evidence-heading">
-              <p class="eyebrow">FIG. 02 · VERSIONS</p>
-              <h3>The same task, version by version.</h3>
+              <p class="eyebrow">FIG. 02 · GENERATIONS</p>
+              <h3>The same task, generation by generation.</h3>
             </div>
+            <p class="version-row-label">KICK</p>
             <div class="version-strip">
               <figure class="version-card">
-                <span class="version-badge">v3</span>
-                <video muted loop playsinline preload="none" poster="assets/posters/versions/v3.jpg"><source src="assets/videos/versions/v3.mp4" type="video/mp4" /></video>
+                <span class="version-badge">gen 1</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/kick_gen1.jpg"><source src="assets/videos/versions/kick_gen1.mp4" type="video/mp4" /></video>
+                <ul class="diff"><li class="add">+ recovery phase</li><li class="add">+ recovery timer</li></ul>
+              </figure>
+              <figure class="version-card">
+                <span class="version-badge">gen 2</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/kick_gen2.jpg"><source src="assets/videos/versions/kick_gen2.mp4" type="video/mp4" /></video>
+                <ul class="diff"><li class="add">+ MildFlat terrain</li></ul>
+              </figure>
+              <figure class="version-card">
+                <span class="version-badge">gen 3</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/kick_gen3.jpg"><source src="assets/videos/versions/kick_gen3.mp4" type="video/mp4" /></video>
+                <ul class="diff"><li class="add">+ ankle Kd 4.0</li><li class="add">+ ankle delay, friction</li></ul>
+              </figure>
+              <figure class="version-card">
+                <span class="version-badge">gen 4</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/kick_gen4.jpg"><source src="assets/videos/versions/kick_gen4.mp4" type="video/mp4" /></video>
+                <ul class="diff"><li class="add">+ post-kick ball noise</li><li class="add">+ recovery on seen ball</li></ul>
+              </figure>
+              <figure class="version-card">
+                <span class="version-badge">gen 5</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/kick_gen5.jpg"><source src="assets/videos/versions/kick_gen5.mp4" type="video/mp4" /></video>
+                <ul class="diff"><li class="del">- box foot</li><li class="add">+ mesh-hull foot</li></ul>
+              </figure>
+            </div>
+            <figcaption class="version-note">Generations of the Kick policy, each run in the final environment from the same initial state. The first three were trained for earlier versions of the environment and fall in it; the last two were trained for it. Under each generation, what it changes with respect to the previous one (red: removed, green: added).</figcaption>
+            <p class="version-row-label">DRIBBLE</p>
+            <div class="version-strip">
+              <figure class="version-card">
+                <span class="version-badge">gen 1</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/dribble_gen1.jpg"><source src="assets/videos/versions/dribble_gen1.mp4" type="video/mp4" /></video>
                 <ul class="diff"><li class="add">+ Kick V25 reward</li><li class="add">+ direction ±60°</li></ul>
               </figure>
               <figure class="version-card">
-                <span class="version-badge">v4</span>
-                <video muted loop playsinline preload="none" poster="assets/posters/versions/v4.jpg"><source src="assets/videos/versions/v4.mp4" type="video/mp4" /></video>
+                <span class="version-badge">gen 2</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/dribble_gen2.jpg"><source src="assets/videos/versions/dribble_gen2.mp4" type="video/mp4" /></video>
                 <ul class="diff"><li class="del">- direction ±60°</li><li class="add">+ direction fixed 0°</li></ul>
               </figure>
               <figure class="version-card">
-                <span class="version-badge">v6</span>
-                <video muted loop playsinline preload="none" poster="assets/posters/versions/v6.jpg"><source src="assets/videos/versions/v6.mp4" type="video/mp4" /></video>
+                <span class="version-badge">gen 3</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/dribble_gen3.jpg"><source src="assets/videos/versions/dribble_gen3.mp4" type="video/mp4" /></video>
                 <ul class="diff"><li class="add">+ foot-slip, upright torso</li><li class="add">+ direction ±20°</li></ul>
               </figure>
               <figure class="version-card">
-                <span class="version-badge">v7</span>
-                <video muted loop playsinline preload="none" poster="assets/posters/versions/v7.jpg"><source src="assets/videos/versions/v7.mp4" type="video/mp4" /></video>
+                <span class="version-badge">gen 4</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/dribble_gen4.jpg"><source src="assets/videos/versions/dribble_gen4.mp4" type="video/mp4" /></video>
                 <ul class="diff"><li class="del">- direction ±20°</li><li class="add">+ direction ±40°</li></ul>
               </figure>
               <figure class="version-card">
-                <span class="version-badge">v8</span>
-                <video muted loop playsinline preload="none" poster="assets/posters/versions/v8.jpg"><source src="assets/videos/versions/v8.mp4" type="video/mp4" /></video>
+                <span class="version-badge">gen 5</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/dribble_gen5.jpg"><source src="assets/videos/versions/dribble_gen5.mp4" type="video/mp4" /></video>
                 <ul class="diff"><li class="add">+ toe-poke penalty</li><li class="add">+ velocity reward floor</li></ul>
               </figure>
             </div>
-            <figcaption class="version-note">Versions of the Dribble policy, each recorded in the final environment from the same initial state. Under each version, what it changes with respect to the previous one shown (red: removed, green: added).</figcaption>
+            <figcaption class="version-note">Generations of the Dribble policy, each recorded in the final environment from the same initial state. Under each generation, what it changes with respect to the previous one shown.</figcaption>
           </figure>
       </section>
 

@@ -217,3 +217,5 @@ pre { background: var(--ink); color: #d7f8ee; font: 0.72rem/1.7 var(--mono); mar
 .diff .add { background: #d5efd6; color: #2e6b33; }
 .version-note { color: var(--muted); font-size: 0.8rem; margin-top: 14px; }
 @media (max-width: 860px) { .version-strip { grid-template-columns: repeat(2, 1fr); } }
+.version-row-label { color: var(--teal); font: 700 0.73rem/1.2 var(--mono); letter-spacing: 0.08em; margin: 30px 0 0; }
+.version-row-label:first-of-type { margin-top: 22px; }
