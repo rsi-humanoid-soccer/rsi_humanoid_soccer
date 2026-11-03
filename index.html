@@ -95,14 +95,36 @@
           <figure class="evidence-figure">
             <div class="evidence-heading">
               <p class="eyebrow">FIG. 02 · VERSIONS</p>
-              <h3>The range of ball positions that the kick handles grows from version to version.</h3>
+              <h3>The same task, version by version.</h3>
             </div>
-            <div class="evidence-grid evidence-grid-single">
-              <article>
-                <img src="assets/figures/rsi_iteration.png" alt="Four versions of the kick in the simulator, each with the start range of the ball painted on the ground and a diff of what the version changes." />
-                <p>The yellow area on the ground is the start range of the ball that each version handles; the dashed outline is the full target range. Under each version, a diff of its change (red: removed, green: added). This is an illustration with simulation screenshots and example changes, not a result.</p>
-              </article>
+            <div class="version-strip">
+              <figure class="version-card">
+                <span class="version-badge">v3</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/v3.jpg"><source src="assets/videos/versions/v3.mp4" type="video/mp4" /></video>
+                <ul class="diff"><li class="add">+ Kick V25 reward</li><li class="add">+ direction ±60°</li></ul>
+              </figure>
+              <figure class="version-card">
+                <span class="version-badge">v4</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/v4.jpg"><source src="assets/videos/versions/v4.mp4" type="video/mp4" /></video>
+                <ul class="diff"><li class="del">- direction ±60°</li><li class="add">+ direction fixed 0°</li></ul>
+              </figure>
+              <figure class="version-card">
+                <span class="version-badge">v6</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/v6.jpg"><source src="assets/videos/versions/v6.mp4" type="video/mp4" /></video>
+                <ul class="diff"><li class="add">+ foot-slip, upright torso</li><li class="add">+ direction ±20°</li></ul>
+              </figure>
+              <figure class="version-card">
+                <span class="version-badge">v7</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/v7.jpg"><source src="assets/videos/versions/v7.mp4" type="video/mp4" /></video>
+                <ul class="diff"><li class="del">- direction ±20°</li><li class="add">+ direction ±40°</li></ul>
+              </figure>
+              <figure class="version-card">
+                <span class="version-badge">v8</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/versions/v8.jpg"><source src="assets/videos/versions/v8.mp4" type="video/mp4" /></video>
+                <ul class="diff"><li class="add">+ toe-poke penalty</li><li class="add">+ velocity reward floor</li></ul>
+              </figure>
             </div>
+            <figcaption class="version-note">Versions of the Dribble policy, each recorded in the final environment from the same initial state. Under each version, what it changes with respect to the previous one shown (red: removed, green: added).</figcaption>
           </figure>
       </section>
 

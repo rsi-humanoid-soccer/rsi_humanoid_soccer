@@ -205,3 +205,15 @@ pre { background: var(--ink); color: #d7f8ee; font: 0.72rem/1.7 var(--mono); mar
   .citation-block { margin-top: 34px; }
   .site-footer { gap: 8px; flex-direction: column; }
 }
+
+/* version strip: one video per version with a code-diff card below */
+.version-strip { display: grid; gap: 14px; grid-template-columns: repeat(5, 1fr); margin-top: 18px; }
+.version-card { margin: 0; position: relative; }
+.version-card video { aspect-ratio: 16 / 9; background: var(--ink); display: block; object-fit: cover; width: 100%; }
+.version-badge { background: var(--teal); color: #fff; font: 700 0.8rem/1 var(--mono); left: 8px; padding: 5px 8px; position: absolute; top: 8px; z-index: 1; }
+.diff { background: #fff; border: 1px solid #aeb3a8; font: 0.72rem/1.5 var(--mono); list-style: none; margin: 6px 0 0; padding: 0; }
+.diff li { padding: 3px 8px; }
+.diff .del { background: #fbd9d6; color: #8e2b2a; }
+.diff .add { background: #d5efd6; color: #2e6b33; }
+.version-note { color: var(--muted); font-size: 0.8rem; margin-top: 14px; }
+@media (max-width: 860px) { .version-strip { grid-template-columns: repeat(2, 1fr); } }

@@ -71,3 +71,11 @@ document.querySelectorAll(".clip-grid").forEach((clipGrid) => {
     if (clipGrid.dataset.suppressVideoClick) { event.preventDefault(); event.stopPropagation(); delete clipGrid.dataset.suppressVideoClick; }
   }, true);
 });
+
+// version strip: play the clips while they are on screen
+const stripVideos = document.querySelectorAll(".version-strip video");
+const stripObserver = new IntersectionObserver(
+  (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }),
+  { threshold: 0.35 },
+);
+stripVideos.forEach((v) => stripObserver.observe(v));
