@@ -32,7 +32,7 @@
           An LLM plans each new version of the training setup; a human writes one sentence of feedback; the rollouts of the best policy feed the next version.
         </p>
         <p class="hero-copy">
-          The loop starts from one generated reference motion and no task-specific data collection, and it targets a humanoid Kick that works over a range of ball positions, evaluated on the real robot.
+          The loop starts from one generated reference motion and no task-specific data collection, and it targets two humanoid skills: a Kick that works over a range of ball positions, evaluated on the real robot over a fixed grid, and a Dribble that follows changes of the target direction, shown as a demonstration of the same system.
         </p>
         <div class="authors" id="authors" aria-label="Authors"></div>
         <div class="hero-actions">
@@ -152,7 +152,7 @@
         <p class="eyebrow">SCOPE</p>
         <h2>What we claim, and what we do not.</h2>
         <div class="resource-grid">
-          <div class="resource-card"><h3>We claim</h3><p>An existence result: from one reference motion, this loop can produce a Kick over a range of start positions, shown on the real robot. Results and ablations will be added when the experiments are complete.</p></div>
+          <div class="resource-card"><h3>We claim</h3><p>An existence result: from one reference motion, this loop can produce a Kick over a range of start positions, evaluated on the real robot, and a Dribble that follows direction changes, shown as a demonstration. Results and ablations will be added when the experiments are complete.</p></div>
           <div class="resource-card"><h3>We do not claim</h3><p>The lowest cost or the fewest versions, an automated loop, or that the skills cannot be trained without a reference motion.</p></div>
           <div class="resource-card"><h3>What stays fixed</h3><p>The RL solver, the evaluator, the success criteria and the real-robot grid. A human is in the loop on every version.</p></div>
         </div>
