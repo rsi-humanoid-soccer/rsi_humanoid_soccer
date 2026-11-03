@@ -15,7 +15,6 @@
       <a class="brand" href="#top" aria-label="RSI-HumanoidSoccer home">RSI<span>.</span></a>
       <nav aria-label="Primary navigation">
         <a href="#overview">Overview</a>
-        <a href="#method">Method</a>
         <a href="#videos">Videos</a>
         <a href="#design">Design</a>
         <a href="#resources">Resources</a>
@@ -72,7 +71,7 @@
           <p class="eyebrow">OVERVIEW</p>
           <h2>One reference. One loop. One robot.</h2>
           <p>
-            Training a kick from one reference motion usually ends at one ball position. We keep going: the system decides what to train on next, and carries the rollouts of its best policy, failures included, into the next version.
+            Training a kick from one reference motion usually ends at one ball position. We keep going. After the first kick policy the tracking term is dropped, and the LLM decides every later version from the failure statistics and one sentence of human feedback. The rollouts of the best policy, failures included, carry over to the next version; the weights do not.
           </p>
         </div>
         <figure class="evidence-figure">
@@ -87,16 +86,7 @@
             </article>
           </div>
         </figure>
-      </section>
-
-      <section id="method" class="research-section">
-        <div class="section-shell">
-          <p class="eyebrow">THE LOOP</p>
-          <h2>Every version changes what the robot trains on.</h2>
-          <p class="research-lead">
-            After the first kick policy the tracking term is dropped, and the LLM decides each later version from the failure statistics and one sentence of human feedback. Data carries over; weights do not.
-          </p>
-          <div class="innovation-grid">
+              <div class="innovation-grid">
             <article><span>01</span><h3>Single reference</h3><p>One generated reference motion starts the first version, shared by Kick and Dribble. No expert demonstration is collected for the task.</p></article>
             <article><span>02</span><h3>LLM planning</h3><p>The LLM may change the task distribution, reward terms, domain randomization, hyperparameters and thresholds, and nothing about the evaluator.</p></article>
             <article><span>03</span><h3>Human feedback</h3><p>A human watches the best checkpoint of each version and writes a sentence, for example which behavior is weak.</p></article>
@@ -114,7 +104,6 @@
               </article>
             </div>
           </figure>
-        </div>
       </section>
 
       <section id="videos" class="research-section">
