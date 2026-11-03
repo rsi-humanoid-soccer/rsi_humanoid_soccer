@@ -17,7 +17,7 @@
         <a href="#overview">Overview</a>
         <a href="#method">Method</a>
         <a href="#videos">Videos</a>
-        <a href="#claims">Claims</a>
+        <a href="#design">Design</a>
         <a href="#resources">Resources</a>
         <a href="#citation">Citation</a>
       </nav>
@@ -29,10 +29,10 @@
         <p class="eyebrow">HUMAN-IN-THE-LOOP RECURSIVE SELF-IMPROVEMENT</p>
         <h1>Training Kick and Dribble Skills from a <em>Single Reference Motion.</em></h1>
         <p class="hero-positioning">
-          An LLM plans each new version of the training setup; a human writes one sentence of feedback; the rollouts of the best policy feed the next version.
+          One reference motion. An LLM that plans every new version. A human who writes one sentence of feedback.
         </p>
         <p class="hero-copy">
-          The loop starts from one generated reference motion and no task-specific data collection, and it targets two humanoid skills: a Kick that works over a range of ball positions, evaluated on the real robot over a fixed grid, and a Dribble that follows changes of the target direction, shown as a demonstration of the same system.
+          From a single generated reference, the loop trains a humanoid Kick over a range of ball positions and a Dribble that follows changes of direction, with no task-specific data collection.
         </p>
         <div class="authors" id="authors" aria-label="Authors"></div>
         <div class="hero-actions">
@@ -58,7 +58,7 @@
             <span>Real robot · clip 11</span>
           </div>
         </figure>
-        <p class="publication-note">Clips of earlier kick and dribble policies on the K1 humanoid; they stand in until the final policies of the runs are recorded.</p>
+        <p class="publication-note">Clips of earlier policies on the K1 humanoid. Experiments and ablations are in progress; the figures below are illustrations.</p>
       </section>
 
       <section class="signal-strip" aria-label="Overview">
@@ -70,9 +70,9 @@
       <section id="overview" class="section-shell method-section">
         <div class="section-intro">
           <p class="eyebrow">OVERVIEW</p>
-          <h2>One reference motion starts a loop that ends on the real robot.</h2>
+          <h2>One reference. One loop. One robot.</h2>
           <p>
-            A standard method that trains a kick from one reference stops at a single ball position. Going beyond it needs a loop that decides what to train on next, and a solver that keeps learning from the imperfect rollouts of the previous version, failures included.
+            Training a kick from one reference motion usually ends at one ball position. We keep going: the system decides what to train on next, and carries the rollouts of its best policy, failures included, into the next version.
           </p>
         </div>
         <figure class="evidence-figure">
@@ -92,9 +92,9 @@
       <section id="method" class="research-section">
         <div class="section-shell">
           <p class="eyebrow">THE LOOP</p>
-          <h2>Each version changes what the robot trains on.</h2>
+          <h2>Every version changes what the robot trains on.</h2>
           <p class="research-lead">
-            After the first kick policy, the tracking term is dropped and every later version is decided by the LLM from the failure statistics and the human's feedback. Only the data of the best policy carries over, not its weights.
+            After the first kick policy the tracking term is dropped, and the LLM decides each later version from the failure statistics and one sentence of human feedback. Data carries over; weights do not.
           </p>
           <div class="innovation-grid">
             <article><span>01</span><h3>Single reference</h3><p>One generated reference motion starts the first version, shared by Kick and Dribble. No expert demonstration is collected for the task.</p></article>
@@ -126,7 +126,7 @@
               <header class="task-summary">
                 <p class="research-tag">13 CLIPS</p>
                 <h3>Real-robot clips</h3>
-                <p>Clips of earlier kick and dribble policies. They are placeholders: the final policies of the runs, with the evaluation over the fixed start grid, will replace them.</p>
+                <p>Clips of earlier kick and dribble policies. Clips of the final policies will be added.</p>
               </header>
               <div class="clip-grid">
                 <video controls muted loop playsinline preload="none"><source src="assets/videos/real/01.mp4" type="video/mp4" /></video>
@@ -148,13 +148,13 @@
         </div>
       </section>
 
-      <section id="claims" class="section-shell resources-section">
-        <p class="eyebrow">SCOPE</p>
-        <h2>What we claim, and what we do not.</h2>
+      <section id="design" class="section-shell resources-section">
+        <p class="eyebrow">DESIGN</p>
+        <h2>What stays fixed, and what changes.</h2>
         <div class="resource-grid">
-          <div class="resource-card"><h3>We claim</h3><p>An existence result: from one reference motion, this loop can produce a Kick over a range of start positions, evaluated on the real robot, and a Dribble that follows direction changes, shown as a demonstration. Results and ablations will be added when the experiments are complete.</p></div>
-          <div class="resource-card"><h3>We do not claim</h3><p>The lowest cost or the fewest versions, an automated loop, or that the skills cannot be trained without a reference motion.</p></div>
-          <div class="resource-card"><h3>What stays fixed</h3><p>The RL solver, the evaluator, the success criteria and the real-robot grid. A human is in the loop on every version.</p></div>
+          <div class="resource-card"><h3>Fixed</h3><p>The RL solver, the evaluator, the success criteria and the real-robot evaluation grid.</p></div>
+          <div class="resource-card"><h3>Changed by the LLM</h3><p>The task distribution, reward terms, domain randomization, hyperparameters and thresholds, one version at a time.</p></div>
+          <div class="resource-card"><h3>The human</h3><p>Watches the best checkpoint of each version, writes a sentence of feedback, and declares when to stop.</p></div>
         </div>
       </section>
 
