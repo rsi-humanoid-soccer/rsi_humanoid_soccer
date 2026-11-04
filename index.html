@@ -28,10 +28,10 @@
         <p class="eyebrow">HUMAN-IN-THE-LOOP RECURSIVE SELF-IMPROVEMENT</p>
         <h1>Training Kick and Dribble Skills from a <em>Single Reference Motion.</em></h1>
         <p class="hero-positioning">
-          One reference motion. An LLM that plans every new version. A human who writes one sentence of feedback.
+          One motion is enough to teach a humanoid a complex skill.
         </p>
         <p class="hero-copy">
-          From a single generated reference, the loop trains a humanoid Kick over a range of ball positions and a Dribble that follows changes of direction, with no task-specific data collection.
+          Start from a single reference motion, and let a language model plan the rest. No hand-tuned reward iterations, no adversarial motion prior, no motion dataset collected for the task. The loop trains a humanoid Kick over a range of ball positions and a Dribble that follows changes of direction.
         </p>
         <div class="authors" id="authors" aria-label="Authors"></div>
         <div class="hero-actions">
@@ -53,7 +53,7 @@
           <p class="eyebrow">OVERVIEW</p>
           <h2>One reference. One loop. Real-world skills.</h2>
           <p>
-            Training a kick from one reference motion usually ends at one ball position. We keep going. After the first kick policy the tracking term is dropped, and the LLM decides every later version from the failure statistics and one sentence of human feedback. The rollouts of the best policy, failures included, carry over to the next version; the weights do not.
+            A kick trained from one reference motion usually works for only one ball position, and getting beyond that normally means rounds of reward tuning by hand. Here, the language model does that work instead. Once a first kick policy exists, it plans each new version from the failure statistics and a short note of human feedback, so the human only watches and says what looks wrong. The best policy's rollouts, failures included, carry into the next version; its weights do not.
           </p>
         </div>
         <figure class="evidence-figure">
